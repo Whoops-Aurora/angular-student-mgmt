@@ -1,0 +1,8 @@
+<!-- student-information.component.html -->
+<div *ngFor="let student of students">
+    <p>Name: {{ student.name }}</p>
+    <p>Average Marks: {{ calculateAverage(student.id) }}</p>
+    <p>Grade: {{ calculateStudentGrade(calculateAverage(student.id)) }}</p>
+    <!-- Display other student details -->
+  </div>
+  

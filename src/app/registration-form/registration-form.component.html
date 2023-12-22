@@ -1,0 +1,32 @@
+<h2>Registration Form</h2>
+
+<form [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
+  <div>
+    <label for="name">Name:</label>
+    <input type="text" id="name" formControlName="name">
+  </div>
+  <div>
+    <label for="course">Course:</label>
+    <input type="text" id="course" formControlName="course">
+  </div>
+  <div formArrayName="marks">
+    <div *ngFor="let markCtrl of marksArray.controls; let i = index">
+      <label for="mark{{i + 1}}">Mark {{i + 1}}:</label>
+      <input type="number" id="mark{{i + 1}}" [formControl]="getFormControl(i)">
+    </div>
+  </div>
+
+  <button type="submit" [disabled]="!registrationForm.valid">Submit</button>
+</form>
+
+<hr>
+
+<h2>All Students</h2>
+<div *ngFor="let student of students">
+  <p>Name: {{ student.name }}</p>
+  <p>Course: {{ student.course }}</p>
+  <p>Marks:
+    <span *ngFor="let mark of student.marks">{{ mark }} </span>
+  </p>
+  <!-- Display other student details -->
+</div>
